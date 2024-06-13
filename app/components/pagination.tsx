@@ -16,7 +16,6 @@ const StyledBtn = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 5px;
 `;
 
 export const Paginator = () => {
@@ -34,7 +33,7 @@ export const Paginator = () => {
     if (previous) refresh(previous);
   };
 
-  const iconSize = 15;
+  const iconSize = 20;
 
   return (
     <StyledPaginatorContainer>

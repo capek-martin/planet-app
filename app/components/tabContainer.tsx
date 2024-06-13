@@ -27,7 +27,7 @@ interface StyledTabProps {
 }
 
 const Tab = styled.div<StyledTabProps>`
-  padding: 0.1rem 0.5rem;
+  padding: 0.5rem 1.5rem;
   cursor: pointer;
   background-color: ${({ active }) => (active ? "#ccc" : "#f0f0f0")};
   border-top-left-radius: 0.5rem;
@@ -42,7 +42,7 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li<StyledTabProps>`
   padding: 0.1rem 0.3rem;
-  font-size: 0.5rem;
+  font-size: 1.5rem;
   margin: 0;
   list-style-type: none;
   background-color: ${({ active }) => (active ? "#ccc" : "#f0f0f0")};

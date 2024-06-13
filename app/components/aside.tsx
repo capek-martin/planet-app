@@ -5,7 +5,7 @@ import { Planet } from "../types/planet.types";
 import { Dispatch, SetStateAction } from "react";
 
 const StyledAside = styled.aside`
-  width: 10rem;
+  width: 15rem;
   padding: 0.5rem;
   border-right: 1px solid #272b30;
 `;
@@ -27,7 +27,9 @@ const StyledLi = styled.li<StyledLiProps>`
     props.selected ? "lightgray" : "transparent"};
 `;
 
-const StyledH1 = styled.h1``;
+const StyledH1 = styled.h1`
+  font-size: 2.5rem;
+`;
 
 interface Props {
   selectedPlanet: Planet;

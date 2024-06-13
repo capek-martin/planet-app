@@ -4,7 +4,7 @@ import { Resident } from "../types/resident.types";
 const DetailContainer = styled.div`
   width: 100%;
   max-width: 400px;
-  font-size: 0.4rem;
+  font-size: 1.2rem;
   margin-top: 0.5rem;
 `;
 

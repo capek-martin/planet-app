@@ -6,6 +6,7 @@ const InfoContainer = styled.div`
 `;
 
 const StyledH2 = styled.h2`
+  font-size: 2rem;
   padding-bottom: 0.5rem;
 `;
 
