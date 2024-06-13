@@ -23,13 +23,13 @@ const TabHeader = styled.div`
 const Panel = styled.div``;
 
 interface StyledTabProps {
-  active: boolean;
+  $active: boolean;
 }
 
 const Tab = styled.div<StyledTabProps>`
-  padding: 0.5rem 1.5rem;
+  padding: 0.1rem 0.5rem;
   cursor: pointer;
-  background-color: ${({ active }) => (active ? "#ccc" : "#f0f0f0")};
+  background-color: ${({ $active }) => ($active ? "#ccc" : "#f0f0f0")};
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   border: 1px solid #ccc;
@@ -42,11 +42,11 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li<StyledTabProps>`
   padding: 0.1rem 0.3rem;
-  font-size: 1.5rem;
+  font-size: 0.5rem;
   margin: 0;
   list-style-type: none;
-  background-color: ${({ active }) => (active ? "#ccc" : "#f0f0f0")};
-  font-weight: ${({ active }) => (active ? "bold" : "normal")};
+  background-color: ${({ $active }) => ($active ? "#ccc" : "#f0f0f0")};
+  font-weight: ${({ $active }) => ($active ? "bold" : "normal")};
   &:hover {
     cursor: pointer;
     background-color: #ccc;
@@ -110,7 +110,7 @@ export const TabContainer = ({ selectedPlanet }: Props) => {
         residents.map((resident, index) => (
           <StyledLi
             key={index}
-            active={selectedResident === resident.url}
+            $active={selectedResident === resident.url}
             onClick={() =>
               setSelectedResident(
                 selectedResident === resident.url ? null : resident.url
@@ -137,7 +137,7 @@ export const TabContainer = ({ selectedPlanet }: Props) => {
         films.map((film, index) => (
           <StyledLi
             key={index}
-            active={selectedFilm === film.url}
+            $active={selectedFilm === film.url}
             onClick={() =>
               setSelectedFilm(selectedFilm === film.url ? null : film.url)
             }
@@ -157,13 +157,13 @@ export const TabContainer = ({ selectedPlanet }: Props) => {
     <StyledTabContainer>
       <TabHeader>
         <Tab
-          active={activeTab === Tabs.RESIDENTS}
+          $active={activeTab === Tabs.RESIDENTS}
           onClick={() => !isLoading && setActiveTab(Tabs.RESIDENTS)}
         >
           Residents
         </Tab>
         <Tab
-          active={activeTab === Tabs.FILMS}
+          $active={activeTab === Tabs.FILMS}
           onClick={() => !isLoading && setActiveTab(Tabs.FILMS)}
         >
           Films

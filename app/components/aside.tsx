@@ -5,7 +5,7 @@ import { Planet } from "../types/planet.types";
 import { Dispatch, SetStateAction } from "react";
 
 const StyledAside = styled.aside`
-  width: 15rem;
+  width: 10rem;
   padding: 0.5rem;
   border-right: 1px solid #272b30;
 `;
@@ -20,7 +20,9 @@ interface StyledLiProps {
 }
 
 const StyledLi = styled.li<StyledLiProps>`
-  margin: 0;
+  font-size: 0.5rem;
+  padding: 0.2rem;
+  cursor: pointer;
   list-style-type: none;
   font-weight: ${(props) => (props.selected ? "700" : "400")};
   background-color: ${(props) =>
@@ -28,7 +30,7 @@ const StyledLi = styled.li<StyledLiProps>`
 `;
 
 const StyledH1 = styled.h1`
-  font-size: 2.5rem;
+  font-size: 1rem;
 `;
 
 interface Props {

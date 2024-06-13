@@ -33,7 +33,7 @@ export const Paginator = () => {
     if (previous) refresh(previous);
   };
 
-  const iconSize = 20;
+  const iconSize = 15;
 
   return (
     <StyledPaginatorContainer>
