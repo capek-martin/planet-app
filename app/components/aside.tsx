@@ -20,7 +20,6 @@ interface StyledLiProps {
 }
 
 const StyledLi = styled.li<StyledLiProps>`
-  font-size: 0.5rem;
   margin: 0;
   list-style-type: none;
   font-weight: ${(props) => (props.selected ? "700" : "400")};
@@ -28,9 +27,7 @@ const StyledLi = styled.li<StyledLiProps>`
     props.selected ? "lightgray" : "transparent"};
 `;
 
-const StyledH1 = styled.h1`
-  font-size: 1rem;
-`;
+const StyledH1 = styled.h1``;
 
 interface Props {
   selectedPlanet: Planet;

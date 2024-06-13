@@ -7,15 +7,15 @@ import { MainContainer } from "./components/mainContainer";
 import { Planet } from "./types/planet.types";
 
 const Home = () => {
-  const { planetList, next, previous, refresh } = usePlanets();
+  const { planetList } = usePlanets();
   const [selectedPlanet, setSelectedPlanet] = useState<Planet>(planetList[0]);
 
   useEffect(() => {
-    // refresh();
     setSelectedPlanet(planetList[0]);
   }, [planetList]);
 
-  if (!selectedPlanet) return "Loader...";
+  // todo
+  if (!selectedPlanet) return <>Loading...</>;
   return (
     <MainContainer>
       <Aside
