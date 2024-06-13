@@ -3,8 +3,13 @@ import { Film } from "../types/film.types";
 
 const DetailContainer = styled.div`
   width: 100%;
-  font-size: 0.5rem;
+  font-size: 1.5rem;
   margin-top: 0.5rem;
+
+  span,
+  p {
+    font-weight: normal;
+  }
 `;
 
 interface Props {
@@ -15,16 +20,16 @@ export const FilmDetail = ({ film }: Props) => {
   return (
     <DetailContainer>
       <p>
-        <strong>Title:</strong> {film.title}
+        <strong>Title:</strong> <span>{film.title}</span>
       </p>
       <p>
-        <strong>Director:</strong> {film.director}
+        <strong>Director:</strong> <span>{film.director}</span>
       </p>
       <p>
-        <strong>Producer:</strong> {film.producer}
+        <strong>Producer:</strong> <span>{film.producer}</span>
       </p>
       <p>
-        <strong>Release Date:</strong> {film.release_date}
+        <strong>Release Date:</strong> <span>{film.release_date}</span>
       </p>
       <p>
         <strong>Opening Crawl:</strong>

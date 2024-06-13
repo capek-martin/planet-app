@@ -14,7 +14,6 @@ const Home = () => {
     setSelectedPlanet(planetList[0]);
   }, [planetList]);
 
-  // todo
   if (!selectedPlanet) return <>Loading...</>;
   return (
     <MainContainer>

@@ -48,11 +48,10 @@ export const PlanetProvider = ({ children }: Props) => {
       console.log(err);
     }
   };
-
   const getPageNumber = (url: string | null) => {
-    if (!url) return 1;
-    const urlParams = new URLSearchParams(url);
-    return parseInt(urlParams.get("page") || "1", 10);
+    if (!url || !url.split("?page=")[1]) return 1;
+    console.log(url, "url");
+    return parseInt(url.split("?page=")[1]);
   };
 
   useEffect(() => {

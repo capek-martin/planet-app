@@ -4,9 +4,9 @@ const StyledMainContainer = styled.div`
   display: flex;
   margin: 2rem auto;
   width: 70%;
-  min-height: 70vh;
-  background-color: #eee;
-  border-radius: 0.2rem;
+  min-height: 80vh;
+  background-color: var(--panel-bg-color);
+  border-radius: 0.5rem;
 `;
 
 interface Props {

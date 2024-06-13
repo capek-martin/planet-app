@@ -6,12 +6,13 @@ const InfoContainer = styled.div`
 `;
 
 const StyledH2 = styled.h2`
-  font-size: 1rem;
-  padding-bottom: 0.5rem;
+  font-size: 2rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid;
 `;
 
 const Attribute = styled.div`
-  font-size: 0.5rem;
+  font-size: 1.5rem;
   strong {
     font-weight: bold;
     margin-right: 5px;

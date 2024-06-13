@@ -5,11 +5,12 @@ import { usePlanets } from "../contexts/planetContext";
 const StyledPaginatorContainer = styled.div`
   display: flex;
   width: 100%;
-  gap: 0.2rem;
-  padding: 0.2rem 0;
-  margin: 0.2rem 0;
+  gap: 0.3rem;
+  padding: 0.5rem 0;
+  margin: 0.5rem 0;
   border-top: 1px solid;
   border-bottom: 1px solid;
+  align-items: center;
 `;
 
 const StyledBtn = styled.button`
@@ -18,8 +19,14 @@ const StyledBtn = styled.button`
   cursor: pointer;
 `;
 
+const StyledBtnNoIcon = styled.button`
+  height: 29px;
+  width: 29px;
+  font-weight: bold;
+`;
+
 export const Paginator = () => {
-  const { next, previous, refresh } = usePlanets();
+  const { currentPage, next, previous, refresh } = usePlanets();
 
   const handleRefresh = () => {
     refresh();
@@ -33,8 +40,7 @@ export const Paginator = () => {
     if (previous) refresh(previous);
   };
 
-  const iconSize = 15;
-
+  const iconSize = 25;
   return (
     <StyledPaginatorContainer>
       <StyledBtn onClick={handleRefresh}>
@@ -43,6 +49,8 @@ export const Paginator = () => {
       <StyledBtn onClick={handlePrevious} disabled={!previous}>
         <AiOutlineLeft size={iconSize} />
       </StyledBtn>
+
+      <StyledBtnNoIcon> {currentPage ?? 1}</StyledBtnNoIcon>
       <StyledBtn onClick={handleNext} disabled={!next}>
         <AiOutlineRight size={iconSize} />
       </StyledBtn>

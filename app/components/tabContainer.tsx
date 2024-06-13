@@ -15,7 +15,7 @@ const StyledTabContainer = styled.div`
 `;
 
 const TabHeader = styled.div`
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 1rem;
   display: flex;
 `;
@@ -27,29 +27,35 @@ interface StyledTabProps {
 }
 
 const Tab = styled.div<StyledTabProps>`
-  padding: 0.1rem 0.5rem;
+  padding: 0.5rem 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
   background-color: ${({ $active }) => ($active ? "#ccc" : "#f0f0f0")};
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
 `;
 
 const StyledUl = styled.ul`
   margin: 0;
   list-style-type: none;
+
+  span {
+    font-size: 1.5rem;
+  }
 `;
 
 const StyledLi = styled.li<StyledTabProps>`
   padding: 0.1rem 0.3rem;
-  font-size: 0.5rem;
+  font-size: 1.5rem;
   margin: 0;
   list-style-type: none;
   background-color: ${({ $active }) => ($active ? "#ccc" : "#f0f0f0")};
   font-weight: ${({ $active }) => ($active ? "bold" : "normal")};
   &:hover {
     cursor: pointer;
-    background-color: #ccc;
+    background-color: var(--hover-color);
   }
 `;
 
@@ -132,7 +138,7 @@ export const TabContainer = ({ selectedPlanet }: Props) => {
   const FilmsTab = () => (
     <StyledUl>
       {films.length === 0 ? (
-        <span>None</span>
+        <span>Not seen in any film.</span>
       ) : (
         films.map((film, index) => (
           <StyledLi
