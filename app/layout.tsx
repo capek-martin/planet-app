@@ -4,6 +4,8 @@ import { PlanetProvider } from "./contexts/planetContext";
 import StyledComponentsRegistry from "./contexts/registry";
 import { LoadingProvider } from "./contexts/loadingContext";
 import GlobalStyle from "./globalStyles";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <StyledComponentsRegistry>
           <LoadingProvider>
+            <ToastContainer />
             <GlobalStyle />
             <PlanetProvider>{children}</PlanetProvider>
           </LoadingProvider>

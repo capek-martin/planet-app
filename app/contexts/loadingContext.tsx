@@ -5,6 +5,8 @@ interface LoadingContextProps {
   isLoading: boolean;
   startLoading: () => void;
   stopLoading: () => void;
+  isError: boolean;
+  setIsError: () => void;
 }
 
 const LoadingContext = createContext<LoadingContextProps | undefined>(
@@ -14,13 +16,17 @@ const LoadingContext = createContext<LoadingContextProps | undefined>(
 const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setError] = useState<boolean>(false);
 
   const startLoading = () => setIsLoading(true);
   const stopLoading = () => setIsLoading(false);
+  const setIsError = () => setError(true);
 
   return (
-    <LoadingContext.Provider value={{ isLoading, startLoading, stopLoading }}>
+    <LoadingContext.Provider
+      value={{ isLoading, startLoading, stopLoading, setIsError, isError }}
+    >
       {children}
     </LoadingContext.Provider>
   );

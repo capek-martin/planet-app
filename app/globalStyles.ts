@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     --border-color: #272B30;
     --hover-color: #d3d3d3;
     --panel-bg-color: #eee;
+    --spinner-color: #999;
   }
 
   * {

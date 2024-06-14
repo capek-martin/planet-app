@@ -26,15 +26,13 @@ interface Props {
 
 export const Content = ({ selectedPlanet }: Props) => {
   return (
-    <>
-      <ContentContainer>
-        <Panel>
-          <InfoPanel selectedPlanet={selectedPlanet} />
-        </Panel>
-        <Panel>
-          <TabContainer selectedPlanet={selectedPlanet} />
-        </Panel>
-      </ContentContainer>
-    </>
+    <ContentContainer>
+      <Panel>
+        <InfoPanel selectedPlanet={selectedPlanet} />
+      </Panel>
+      <Panel>
+        <TabContainer selectedPlanet={selectedPlanet} />
+      </Panel>
+    </ContentContainer>
   );
 };

@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Resident } from "../types/resident.types";
 import { Planet } from "../types/planet.types";
 import { Film } from "../types/film.types";
 import { useLoading } from "../contexts/loadingContext";
 import { ResidentDetail } from "./residentDetail";
 import { FilmDetail } from "./filmDetail";
+import { Loader } from "./loader";
+import { toast } from "react-toastify";
 
 const StyledTabContainer = styled.div`
   display: flex;
@@ -69,7 +71,7 @@ interface Props {
 }
 
 export const TabContainer = ({ selectedPlanet }: Props) => {
-  const { startLoading, stopLoading, isLoading } = useLoading();
+  const { startLoading, stopLoading, isLoading, setIsError } = useLoading();
 
   const [activeTab, setActiveTab] = useState(Tabs.RESIDENTS);
   const [residents, setResidents] = useState<Resident[]>([]);
@@ -77,36 +79,48 @@ export const TabContainer = ({ selectedPlanet }: Props) => {
   const [selectedResident, setSelectedResident] = useState<string | null>(null);
   const [selectedFilm, setSelectedFilm] = useState<string | null>(null);
 
-  const fetchResidents = async () => {
+  const fetchResidents = useCallback(async () => {
     startLoading();
-    const residentsData = await Promise.all(
-      selectedPlanet.residents.map(async (url) => {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-      })
-    );
-    setResidents(residentsData);
-    stopLoading();
-  };
+    try {
+      const residentsData = await Promise.all(
+        selectedPlanet.residents.map(async (url) => {
+          const response = await fetch(url);
+          const data = await response.json();
+          return data;
+        })
+      );
+      setResidents(residentsData);
+    } catch (error) {
+      toast.error("Error");
+      setIsError();
+    } finally {
+      stopLoading();
+    }
+  }, [selectedPlanet]);
 
-  const fetchFilms = async () => {
+  const fetchFilms = useCallback(async () => {
     startLoading();
-    const filmsData = await Promise.all(
-      selectedPlanet.films.map(async (url) => {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-      })
-    );
-    setFilms(filmsData);
-    stopLoading();
-  };
+    try {
+      const filmsData = await Promise.all(
+        selectedPlanet.films.map(async (url) => {
+          const response = await fetch(url);
+          const data = await response.json();
+          return data;
+        })
+      );
+      setFilms(filmsData);
+    } catch (error) {
+      toast.error("Error");
+      setIsError();
+    } finally {
+      stopLoading();
+    }
+  }, [selectedPlanet]);
 
   useEffect(() => {
     if (activeTab === Tabs.RESIDENTS) fetchResidents();
     if (activeTab === Tabs.FILMS) fetchFilms();
-  }, [selectedPlanet, activeTab]);
+  }, [selectedPlanet, activeTab, fetchResidents, fetchFilms]);
 
   const ResidentsTab = () => (
     <StyledUl>
@@ -158,7 +172,7 @@ export const TabContainer = ({ selectedPlanet }: Props) => {
     </StyledUl>
   );
 
-  if (!activeTab) return <>Loading...</>;
+  if (!activeTab) return <Loader />;
   return (
     <StyledTabContainer>
       <TabHeader>
@@ -176,7 +190,7 @@ export const TabContainer = ({ selectedPlanet }: Props) => {
         </Tab>
       </TabHeader>
       {isLoading ? (
-        <div>Loading...</div>
+        <Loader />
       ) : (
         <>
           <Panel
