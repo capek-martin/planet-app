@@ -22,7 +22,7 @@ const Home = () => {
     <MainContainer>
       {!selectedPlanet ? (
         <Loader />
-      ) : !isError ? (
+      ) : isError ? (
         <NotifyMessage type="error">
           Network issue, please refresh the page
         </NotifyMessage>
